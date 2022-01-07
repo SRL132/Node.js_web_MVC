@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Container } from "react-bootstrap";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
+import { AuthContext } from "./context/auth/reducer";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={currentUser}>
+      <NavBar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/recoverpassword" element={<RecoverPassword />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 
