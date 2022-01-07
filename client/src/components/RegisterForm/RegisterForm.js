@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-// import { AuthContext } from '../../context/auth/reducer'
-// import { auth } from '../../firebase/firebase.js'
-// import { createOrUpdateUser } from '../../utils/auth'
+import { AuthContext } from '../../context/auth/reducer'
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -10,23 +8,13 @@ export default function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password);
-        // queries.registerUser(email, password)
-        // try {
-        //     const user = true;
-        //     createOrUpdateUser(email, password)
-        //         .then(res => console.log(res))
-        //         .catch(err => {
-        //             console.log(err)
-        //         })
-        // }
-        // catch (err) {
-        //     console.log(err)
-        // }
+        console.log(email, password, passwordConfirm);
+
     }
 
     return (
         <div className="container p-5">
+            <h2 className='text-center'>Log In</h2>
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <form onSubmit={handleSubmit}>
@@ -63,6 +51,7 @@ export default function Register() {
                         <button type="submit" className="btn btn-primary">Register</button>
                     </form>
                 </div>
+                <p className='text-center'>Already have an account? Login <a href="/login">here</a></p>
             </div>
         </div>
     )

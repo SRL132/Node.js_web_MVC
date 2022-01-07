@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-// import { AuthContext } from '../../context/auth/reducer'
-// import { auth } from '../../firebase/firebase.js'
-// import { createOrUpdateUser } from '../../utils/auth'
+import { AuthContext } from '../../context/auth/reducer'
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -16,6 +14,7 @@ export default function Register() {
 
     return (
         <div className="container p-5">
+            <h2 className='text-center'>Log In</h2>
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <form onSubmit={handleSubmit}>
@@ -29,6 +28,8 @@ export default function Register() {
                                 onChange={e => setEmail(e.target.value)}
                                 autoFocus
                             />
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="inputPassword">Password</label>
                             <input
                                 type="password"
@@ -39,10 +40,10 @@ export default function Register() {
                                 autoFocus
                             />
                         </div>
-
                         <button type="submit" className="btn btn-primary">Log in</button>
                     </form>
                 </div>
+                <p className='text-center'>Don't have an account? Register <a href="/register">here</a></p>
             </div>
         </div>
     )
