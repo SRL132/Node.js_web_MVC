@@ -7,12 +7,12 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
-import { AuthContext } from "./context/auth/reducer";
+import { AuthProvider } from "./context/auth/reducer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <AuthContext.Provider value={currentUser}>
+    <AuthProvider value={currentUser}>
       <NavBar />
       <BrowserRouter>
         <Routes>
@@ -23,7 +23,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

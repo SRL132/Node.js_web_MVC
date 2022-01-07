@@ -44,6 +44,7 @@ export default function Register() {
                     </form>
                 </div>
                 <p className='text-center'>Don't have an account? Register <a href="/register">here</a></p>
+                <p className='text-center'>Forgot your password? Recover your password <a href="/recoverpassword">here</a></p>
             </div>
         </div>
     )
