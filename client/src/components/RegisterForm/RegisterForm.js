@@ -10,6 +10,7 @@ export default function Register() {
     const { register } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();

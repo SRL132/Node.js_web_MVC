@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/auth/reducer'
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,6 +15,7 @@ export default function Register() {
     return (
         <div className="container p-5">
             <h2 className='text-center'>Log In</h2>
+            {error && <p className='text-center danger'>{error}</p>}
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <form onSubmit={handleSubmit}>
@@ -27,6 +28,7 @@ export default function Register() {
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 autoFocus
+                                required
                             />
                         </div>
                         <div className="form-group">
@@ -38,6 +40,7 @@ export default function Register() {
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                                 autoFocus
+                                required
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">Log in</button>
