@@ -1,6 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/auth';
-import "dotenv"
+require('../webpack.config');
 require('dotenv').config()
 
 
