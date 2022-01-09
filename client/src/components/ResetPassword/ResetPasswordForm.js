@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/auth/reducer';
 
 
-export default function RecoverPasswordForm() {
+export default function ResetPasswordForm() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
@@ -27,7 +26,7 @@ export default function RecoverPasswordForm() {
 
     return (
         <div className="container p-5">
-            <h2 className='text-center'>Recover Password</h2>
+            <h2 className='text-center'>Reset Password</h2>
             {error && <p className='text-center danger'>{error}</p>}
             {message && <p className='text-center success'>{message}</p>}
 

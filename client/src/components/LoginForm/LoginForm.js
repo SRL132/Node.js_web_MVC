@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { AuthContext, useAuth } from '../../context/auth/reducer'
-import { login } from '../../context/auth/reducer'
+import { useAuth } from '../../context/auth/reducer'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -57,7 +56,7 @@ export default function Register() {
                     </form>
                 </div>
                 <p className='text-center'>Don't have an account? Register <a href="/register">here</a></p>
-                <p className='text-center'>Forgot your password? Recover your password <a href="/recoverpassword">here</a></p>
+                <p className='text-center'>Forgot your password? Reset your password <a href="/recoverpassword">here</a></p>
             </div>
         </div>
     )

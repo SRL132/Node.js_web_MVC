@@ -1,14 +1,21 @@
 import React from 'react'
 import { useAuth } from '../../context/auth/reducer'
-import { useNavigate } from 'react-router-dom'
 
 export default function NavBar() {
-    const { logout } = useAuth()
+    const { logout, currentUser } = useAuth()
 
-
+    async function handleLogout() {
+        try {
+            await logout()
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
-        <div>
+
+        <div >
+            {console.log(currentUser)}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="#">Haroonify</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +28,7 @@ export default function NavBar() {
                             <a className="nav-link" href="Home">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="Login">Log In</a>
+                            {currentUser === null ? <a className="nav-link" href="Login">Log In</a> : <a className="nav-link" href="Login" onClick={handleLogout} >Log Out</a>}
                         </li>
                         <li className="nav-link">Best PC components in the world!</li>
                     </ul>

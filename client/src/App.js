@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Container } from "react-bootstrap";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { AuthProvider } from "./context/auth/reducer";
 
 
@@ -20,7 +18,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/recoverpassword" element={<RecoverPassword />} />
+          <Route path="/recoverpassword" element={<ResetPassword />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>

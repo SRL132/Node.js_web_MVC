@@ -33,10 +33,10 @@ export function AuthProvider({ children }) {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setLoading(false)
             setCurrentUser(user)
-
         })
         return unsubscribe
     }, [])
+
     auth.onAuthStateChanged(user => {
         setLoading(false)
         setCurrentUser(user)
