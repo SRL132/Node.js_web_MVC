@@ -1,31 +1,36 @@
 import React, { useState } from 'react'
-import { AuthContext, useAuth } from '../../context/auth/reducer'
-import { login } from '../../context/auth/reducer'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/auth/reducer';
 
 
-export default function Register() {
+export default function RecoverPasswordForm() {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { loading, login, currentUser } = useAuth();
-    const navigate = useNavigate();
+    const [message, setMessage] = useState('');
+    const { resetPassword } = useAuth();
+    const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await login(email, password);
-            navigate('/home');
-        } catch {
-            setError('Something went wrong')
+            setMessage("");
+            setError("");
+            setLoading(true);
+            await resetPassword(email);
+            setMessage("Password reset email sent");
         }
-
+        catch {
+            setError('failed to reset password')
+        }
+        setLoading(false);
     }
 
     return (
         <div className="container p-5">
-            <h2 className='text-center'>Log In</h2>
+            <h2 className='text-center'>Recover Password</h2>
             {error && <p className='text-center danger'>{error}</p>}
+            {message && <p className='text-center success'>{message}</p>}
+
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <form onSubmit={handleSubmit}>
@@ -41,23 +46,11 @@ export default function Register() {
                                 required
                             />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="inputPassword">Password</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="inputPassword" placeholder="Password"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                                autoFocus
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Log in</button>
+                        <button type="submit" className="btn btn-primary">Reset Password</button>
                     </form>
                 </div>
                 <p className='text-center'>Don't have an account? Register <a href="/register">here</a></p>
-                <p className='text-center'>Forgot your password? Recover your password <a href="/recoverpassword">here</a></p>
+                <p className='text-center'>Already have an account? Login <a href="/login">here</a></p>
             </div>
         </div>
     )

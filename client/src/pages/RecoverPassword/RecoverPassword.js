@@ -1,9 +1,13 @@
 import React from 'react'
+import RecoverPasswordForm from '../../components/RecoverPassword/RecoverPasswordForm'
+
 
 export default function RecoverPassword() {
+
+
     return (
         <div>
-            Hello from Recover Password (Optional?)
+            <RecoverPasswordForm />
         </div>
     )
 }

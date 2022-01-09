@@ -1,7 +1,12 @@
 import React from 'react'
-
+import { useAuth } from '../../context/auth/reducer'
+import { useNavigate } from 'react-router-dom'
 
 export default function NavBar() {
+    const { logout } = useAuth()
+
+
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

@@ -1,25 +1,25 @@
-import { Alert } from 'bootstrap';
-import React, { useState } from 'react'
-
+import React, { useState, useContext } from 'react'
 import { useAuth } from '../../context/auth/reducer';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-    const { register } = useAuth();
+    const { register, currentUser } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+
+    async function handleSubmit(e) {
         e.preventDefault();
         if (password === passwordConfirm) {
-            console.log(email, password, passwordConfirm);
             try {
                 setLoading(true);
-                register(email, password);
-
+                console.log(currentUser)
+                await register(email, password);
+                navigate('/home');
 
             } catch {
                 setError('Something went wrong')
@@ -28,14 +28,12 @@ export default function Register() {
             return setError('Passwords do not match');
         }
         setLoading(false);
-
-
-
     }
 
     return (
         <div className="container p-5">
-            <h2 className='text-center'>Log In</h2>
+            <h2 className='text-center'>Register</h2>
+            {currentUser && <div variant="success">{currentUser.email} is logged in</div>}
             {error && <p className='text-center danger'>{error}</p>}
             <div className="row">
                 <div className="col-md-6 mx-auto">
