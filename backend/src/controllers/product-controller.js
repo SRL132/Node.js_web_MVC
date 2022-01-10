@@ -1,29 +1,24 @@
 const db = require("../models");
 const { logger } = require("../config/config");
-const { Product, validate } = require('../models/product-model');
+const { validateProduct } = require("../models/product-model");
 
 async function createProduct(req, res, next) {
-  const { error } = validate(req.body);
+  const { error } = validateProduct(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
   console.log(req.body);
-  console.log(error);
 
   try {
     const { title, description, price, unitsInStock } = req.body;
-
     const product = await db.Product.create({
       title: title,
       description: description,
       price: price,
       unitsInStock: unitsInStock,
     });
-
     res.status(201).send({
       data: product._id,
     });
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     next(err);
   }
@@ -31,16 +26,12 @@ async function createProduct(req, res, next) {
 
 async function getProducts(req, res, next) {
   try {
-    const products = await db.Product.find()
-      .select({ title: 1 })
-      .lean()
-      .exec();
+    // const products = await db.Product.find().lean().exec();
 
-    res.status(200).send({
-      data: products
+    res.status(201).send({
+      data: "Hello",
     });
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     next(err);
   }
@@ -61,8 +52,7 @@ async function getSingleProduct(req, res, next) {
     res.status(200).send({
       data: product
     });
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     next(err);
   }
@@ -87,8 +77,7 @@ async function updateProduct(req, res, next) {
     res.status(200).send({
       data: updatedProduct,
     });
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     next(err);
   }
@@ -103,8 +92,7 @@ async function deleteProduct(req, res, next) {
     res.status(200).send({
       data: { _id: deletedProduct._id },
     });
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     next(err);
   }
