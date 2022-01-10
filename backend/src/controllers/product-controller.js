@@ -53,11 +53,13 @@ async function getSingleProduct(req, res, next) {
     const product = await db.Product.findById(productId)
       .select({
         title: 1,
-        pages: 1,
+        description: 1,
+        price: 1,
+        unitsInStock: 1,
       });
 
     res.status(200).send({
-      data: book
+      data: product
     });
   }
   catch (err) {
@@ -68,19 +70,19 @@ async function getSingleProduct(req, res, next) {
 
 async function updateProduct(req, res, next) {
   try {
-    // const { productId } = req.params;
-    // const { title, pages } = req.body;
+    const { productId } = req.params;
+    const { title, description } = req.body;
 
-    // const updatedProduct = await db.Product.findOneAndUpdate(
-    //   { _id: productId },
-    //   {
-    //     $set: {
-    //       title: title,
-    //       pages: pages,
-    //     },
-    //   },
-    //   { new: true },
-    // );
+    const updatedProduct = await db.Product.findOneAndUpdate(
+      { _id: productId },
+      {
+        $set: {
+          title: title,
+          description: description,
+        },
+      },
+      { new: true },
+    );
 
     res.status(200).send({
       data: updatedProduct,
@@ -94,12 +96,12 @@ async function updateProduct(req, res, next) {
 
 async function deleteProduct(req, res, next) {
   try {
-    const { bookId } = req.params;
+    const { productId } = req.params;
 
-    const deletedBook = await db.Book.findOneAndDelete({ _id: bookId });
+    const deletedProduct = await db.Product.findOneAndDelete({ _id: productId });
 
     res.status(200).send({
-      data: { _id: deletedBook._id },
+      data: { _id: deletedProduct._id },
     });
   }
   catch (err) {
