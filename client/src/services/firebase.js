@@ -12,7 +12,40 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FB_MEASUREMENT_ID,
 };
 
-const app = firebase.initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 
 export const auth = app.auth();
-export default app;
+
+export function singInWithGoogle() {
+  const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+  return auth.signInWithPopup(GoogleAuthProvider);
+}
+
+export function singInWithEmailAndPassword(email, password) {
+  return auth.signInWithEmailAndPassword(email, password);
+}
+
+export function sendPasswordResetEmail(email) {
+  return auth.sendPasswordResetEmail(email);
+}
+
+export function signOut() {
+  return auth.signOut();
+}
+
+export function getCurrentUserToken() {
+  if (!auth.currentUser) {
+    return null;
+  }
+
+  return auth.currentUser.getIdToken();
+}
+
+export function getCurrentUserEmail() {
+  if (!auth.currentUser) {
+    return null;
+  }
+
+  return auth.currentUser.email;
+}
