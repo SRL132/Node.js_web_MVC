@@ -14,7 +14,7 @@ const ProductRouter = Router();
 ProductRouter.get("/", productController.getProducts);
 
 //  GET `/products/:productId` Get a single product by its ID: `getSingleProduct()` controller
-ProductRouter.get("/:bookId", productController.getSingleProduct);
+ProductRouter.get("/:productId", productController.getSingleProduct);
 
 //  POST `/products` Create a product: `createProduct()` controller
 ProductRouter.post("/", productController.createProduct);
