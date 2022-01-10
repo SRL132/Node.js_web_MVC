@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { useAuth } from '../../context/auth/reducer'
 
 export default function NavBar() {
@@ -13,11 +15,10 @@ export default function NavBar() {
     }
 
     return (
-
         <div >
             {console.log(currentUser)}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">Haroonify</a>
+                <Link to="/home" replace className="navbar-brand">Haroonify</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

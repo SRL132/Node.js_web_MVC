@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { AuthProvider } from "./context/auth/reducer";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import { AuthProvider } from "./context/auth/reducer";
-
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);;
+  const [currentUser, setCurrentUser] = useState(null);
+
   return (
     <AuthProvider value={currentUser}>
-      <NavBar />
       <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />

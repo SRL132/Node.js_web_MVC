@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useAuth } from '../../context/auth/reducer';
 
+import { useAuth } from '../../context/auth/reducer';
 
 export default function ResetPasswordForm() {
     const [email, setEmail] = useState('');

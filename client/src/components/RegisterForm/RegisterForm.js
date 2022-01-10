@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react'
-import { useAuth } from '../../context/auth/reducer';
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../context/auth/reducer';
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -10,7 +11,6 @@ export default function Register() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
 
     async function handleSubmit(e) {
         e.preventDefault();

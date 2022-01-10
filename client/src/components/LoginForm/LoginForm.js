@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useAuth } from '../../context/auth/reducer'
 import { useNavigate } from 'react-router-dom'
 
+import { useAuth } from '../../context/auth/reducer'
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -18,7 +18,6 @@ export default function Register() {
         } catch {
             setError('Something went wrong')
         }
-
     }
 
     return (
