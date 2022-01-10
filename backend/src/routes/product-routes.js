@@ -11,14 +11,10 @@ const productController = require("../controllers/product-controller");
 const ProductRouter = Router();
 
 //  GET `/products` Get all the products: `getProducts()` controller
-ProductRouter.get("/", () => {
-  return "hello post";
-});
+ProductRouter.get("/", productController.getProducts);
 
 //  GET `/products/:productId` Get a single product by its ID: `getSingleProduct()` controller
-ProductRouter.get("/:bookId", () => {
-  return "hello post";
-});
+ProductRouter.get("/:productId", productController.getSingleProduct);
 
 //  POST `/products` Create a product: `createProduct()` controller
 ProductRouter.post("/", () => {

@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
@@ -34,5 +34,7 @@ function validateProduct(product) {
   return schema.validate(product);
 }
 
-exports.ProductModel = ProductModel;
-exports.validate = validateProduct;
+module.exports = {
+  ProductModel: ProductModel,
+  validateProduct: validateProduct,
+};

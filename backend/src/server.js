@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const { json } = require("body-parser");
 const ProductRouter = require("./routes/product-routes");
 
-// const bookRouter = require("./routes/book-routes");
+// const productRouter = require("./routes/product-routes");
 // const userRouter = require("./routes/user-routes");
 
 const app = express();
@@ -12,7 +12,6 @@ const app = express();
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(json());
-
 app.use("/products", ProductRouter);
 // app.use('/users', userRouter);
 
