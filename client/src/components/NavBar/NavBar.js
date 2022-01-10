@@ -31,6 +31,9 @@ export default function NavBar() {
                         <li className="nav-item">
                             {currentUser === null ? <a className="nav-link" href="Login">Log In</a> : <a className="nav-link" href="Login" onClick={handleLogout} >Log Out</a>}
                         </li>
+                        <li className="nav-item">
+                            {currentUser === null ? <a className="nav-link" href="">Register</a> : <a className="nav-link" href="updateprofile">Profile</a>}
+                        </li>
                         <li className="nav-link">Best PC components in the world!</li>
                     </ul>
                 </div>
