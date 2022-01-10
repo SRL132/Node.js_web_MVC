@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ResetPasswordForm from '../../components/ResetPassword/ResetPasswordForm'
+import ResetPasswordForm from '../../components/ResetPasswordForm'
 
 export default function ResetPassword() {
 
