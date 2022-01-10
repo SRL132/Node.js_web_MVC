@@ -34,7 +34,5 @@ function validateProduct(product) {
   return schema.validate(product);
 }
 
-module.exports = {
-  ProductModel: ProductModel,
-  validateProduct: validateProduct,
-};
+exports.ProductModel = ProductModel;
+exports.validateProduct = validateProduct;

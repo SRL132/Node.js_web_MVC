@@ -17,18 +17,12 @@ ProductRouter.get("/", productController.getProducts);
 ProductRouter.get("/:productId", productController.getSingleProduct);
 
 //  POST `/products` Create a product: `createProduct()` controller
-ProductRouter.post("/", () => {
-  return "hello post";
-});
+ProductRouter.post("/", productController.createProduct);
 
 //  PATCH `/products/:productId` Update a product by its id: `updateProduct()` controller
-ProductRouter.patch("/:productId", () => {
-  return "hello post";
-});
+ProductRouter.patch("/:productId", productController.updateProduct);
 
 //  DELETE `/products/:productId` Delete a product by its id: `deleteProduct()` controller
-ProductRouter.delete("/:productId", () => {
-  return "hello post";
-});
+ProductRouter.delete("/:productId", productController.deleteProduct);
 
 module.exports = ProductRouter;

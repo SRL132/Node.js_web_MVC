@@ -1,21 +1,22 @@
 const db = require("../models");
 const { logger } = require("../config/config");
-const { validate } = require("../models/product-model");
+const { validateProduct } = require("../models/product-model");
 
 async function createProduct(req, res, next) {
-  const { error } = validate(req.body);
+  const { error } = validateProduct(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
   console.log(req.body);
-  console.log(error);
 
   try {
-    const product = req.body;
-
-    const dbRes = await db.Product.create(product);
-
+    const { title, description, price, unitsInStock } = req.body;
+    const product = await db.Product.create({
+      title: title,
+      description: description,
+      price: price,
+      unitsInStock: unitsInStock,
+    });
     res.status(201).send({
-      data: "Item Added Successfully",
+      data: product._id,
     });
   } catch (err) {
     console.log(err);
