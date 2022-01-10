@@ -1,0 +1,70 @@
+{
+  "name": "node-develop-your-mvc-project",
+  "version": "1.0.0",
+  "description": "Assembler School: Node.js Develop Your Project MVC",
+  "keywords": [
+    "node",
+    "mvc",
+    "assembler school"
+  ],
+  "contributors": [
+    {
+      "name": "Dani Lucaci",
+      "email": "danilucaci@gmail.com",
+      "url": "https://www.danilucaci.com/"
+    }
+  ],
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js",
+    "test": "jest --env=node",
+    "test:ci:all": "jest --env=node",
+    "test:watch": "jest --watch",
+    "test:related": "jest --bail --findRelatedTests",
+    "lint:js": "eslint . --ext .js",
+    "lint:js:fix": "yarn run lint:js -- --fix",
+    "lint:format": "prettier --write .",
+    "lint:format:check": "prettier --check .",
+    "prepare": "husky install",
+    "precommit": "lint-staged",
+    "prepush": "npm run lint:js && npm run lint:format:check && npm run test"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "helmet": "^5.0.1",
+    "joi": "^17.5.0",
+    "joi-objectid": "^4.0.2",
+    "loglevel": "^1.8.0",
+    "mongoose": "^6.1.5",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.16.7",
+    "@types/jest": "^27.4.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.4.6",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^25.3.4",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^27.4.7",
+    "mongodb-memory-server": "^8.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "supertest": "^6.1.6"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
