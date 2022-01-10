@@ -7,7 +7,6 @@ function connect() {
   return mongoose.connect(`${config.db.url}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-
   });
 }
 
