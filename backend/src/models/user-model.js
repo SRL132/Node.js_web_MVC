@@ -1,56 +1,26 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcrypt");
+const { ObjectId } = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: [true, "The first name is required"],
-      trim: true,
-    },
-    lastName: {
-      type: String,
-      required: [true, "The last name is required"],
-      trim: true,
-    },
+    name: String,
     email: {
       type: String,
-      required: [true, "The email is required"],
-      trim: true,
-      unique: true,
-      validate: {
-        validator: (value) => validator.isEmail(value),
-        message: (props) => `The email ${props.value} is not valid`,
-      },
+      required: true,
+      index: true,
     },
-    password: {
+    role: {
       type: String,
-      required: [true, "The password is required"],
-      minlength: [8, "The password is too short"],
+      default: "subscriber",
     },
+    cart: {
+      type: Array,
+      default: [],
+    },
+    address: String,
+    //   wishlist: [{ type: ObjectId, ref: "Product" }],
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-UserSchema.pre("save", async function passwordPreSave(next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
-
-  try {
-    const hash = await bcrypt.hash(this.password, 12);
-    this.password = hash;
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-});
-
-UserSchema.methods.comparePassword = function comparePassword(candidate) {
-  return bcrypt.compare(candidate, this.password);
-};
-
-const UserModel = new mongoose.model("user", UserSchema);
-
-module.exports = UserModel;
+module.exports = mongoose.model("User", userSchema);
