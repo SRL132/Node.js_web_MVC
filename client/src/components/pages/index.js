@@ -1,0 +1,10 @@
+export { default as CheckoutDelivery } from "./CheckoutDelivery";
+export { default as CheckoutInfo } from "./CheckoutInfo";
+export { default as CheckoutPayment } from "./CheckoutPayment";
+export { default as CheckoutCompleted } from "./CheckoutCompleted";
+export { default as Home } from "./Home";
+export { default as Login } from "./Login";
+export { default as NewProduct } from "./NewProduct";
+export { default as ResetPassword } from "./ResetPassword";
+export { default as Register } from "./Register";
+export { default as UpdateProfile } from "./UpdateProfile";
