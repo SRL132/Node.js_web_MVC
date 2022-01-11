@@ -33,7 +33,6 @@ export default function Register() {
     return (
         <div className="container p-5">
             <h2 className='text-center'>Register</h2>
-            {currentUser && <div variant="success">{currentUser.email} is logged in</div>}
             {error && <p className='text-center danger'>{error}</p>}
             <div className="row">
                 <div className="col-md-6 mx-auto">

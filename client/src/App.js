@@ -6,6 +6,7 @@ import { NavBar } from "./components";
 import { Home, Login, Register, ResetPassword } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateProfileForm from "./components/UpdateProfileForm";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/recoverpassword" element={<ResetPassword />} />
           <Route path="/register" element={<Register />} />
+          <Route path='/checkout' element={<PrivateRoute />} >
+            <Route path='/checkout' element={<Checkout />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

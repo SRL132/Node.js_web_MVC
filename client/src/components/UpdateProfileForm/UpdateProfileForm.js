@@ -17,31 +17,30 @@ export default function UpdateProfileForm() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (password === passwordConfirm) {
-            const promises = [];
-            setLoading(true);
-            setError('');
-            if (email !== currentUser.email) {
-                promises.push(updateEmail(email));
-            }
-            if (password !== currentUser.password) {
-                promises.push(updatePassword(password));
-            }
-            Promise.all(promises).then(() => {
-                navigate('/home')
-            }).catch(() => {
-                setError('Failed to update profile')
-            }).finally(() => {
-                setLoading(false);
-            })
+        if (password !== passwordConfirm) {
+            return setError('passwords do not match');
         }
-        setLoading(false);
+        const promises = [];
+        setLoading(true);
+        setError('');
+        if (email !== currentUser.email) {
+            promises.push(updateEmail(email));
+        }
+        if (password !== currentUser.password) {
+            promises.push(updatePassword(password));
+        }
+        Promise.all(promises).then(() => {
+            navigate('/home')
+        }).catch(() => {
+            setError('Failed to update profile')
+        }).finally(() => {
+            setLoading(false);
+        })
     }
 
     return (
         <div className="container p-5">
             <h2 className='text-center'>Update Profile</h2>
-            {currentUser && <div variant="success">{currentUser.email} is logged in</div>}
             {error && <p className='text-center danger'>{error}</p>}
             <div className="row">
                 <div className="col-md-6 mx-auto">
@@ -52,10 +51,8 @@ export default function UpdateProfileForm() {
                                 type="email"
                                 className="form-control"
                                 id="inputEmail" placeholder="Email"
-                                value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 defaultValue={currentUser.email}
-                                autoFocus
                                 required
                             />
                             <label htmlFor="inputPassword">Password</label>
@@ -65,9 +62,7 @@ export default function UpdateProfileForm() {
                                 id="inputPassword" placeholder="Password"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
-                                defaultValue={currentUser.password}
                                 placeholder="Leave blank to keep the same"
-                                autoFocus
 
                             />
                             <label htmlFor="inputPasswordConfirm">Confirm Password</label>
@@ -78,7 +73,6 @@ export default function UpdateProfileForm() {
                                 value={passwordConfirm}
                                 onChange={e => setPasswordConfirm(e.target.value)}
                                 placeholder="Leave blank to keep the same"
-                                autoFocus
                             />
                         </div>
 
