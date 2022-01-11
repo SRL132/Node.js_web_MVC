@@ -1,5 +1,10 @@
 import React from "react";
+import { useAuth } from "../../context/auth/reducer";
 
 export default function Home() {
-  return <div>Hello from Home</div>;
+  const { currentUser } = useAuth();
+
+  console.log(currentUser);
+
+  return <div>Hi, Hello from Home</div>;
 }

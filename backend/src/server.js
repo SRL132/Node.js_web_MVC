@@ -12,8 +12,8 @@ const corsOpts = {
   allowedHeaders: "*",
 };
 
-app.use(cors(corsOpts));
 
+app.use(cors(corsOpts));
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(json());

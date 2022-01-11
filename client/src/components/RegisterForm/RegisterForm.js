@@ -20,7 +20,7 @@ export default function Register() {
         setLoading(true);
         console.log(currentUser);
         await register(email, password);
-        await syncUserData();
+        // await syncUserData();
         navigate("/home");
       } catch {
         setError("Something went wrong");

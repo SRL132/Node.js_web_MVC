@@ -18,16 +18,16 @@ UserRouter.use(authMiddleware);
 UserRouter.get("/", userController.getUser);
 
 //  GET `/products/:productId` Get a single product by its ID: `getSingleProduct()` controller
-UserRouter.get("/:userId", userController.getUser);
+// UserRouter.get("/:userId", userController.getUser);
 
 //  POST `/products` Create a product: `createProduct()` controller
-UserRouter.post("/", userController.getUser);
+// UserRouter.post("/", userController.getUser);
 
 //  PATCH `/products/:productId` Update a product by its id: `updateProduct()` controller
-UserRouter.patch("/:userId", userController.getUser);
+// UserRouter.patch("/:userId", userController.getUser);
 
 //  DELETE `/products/:productId` Delete a product by its id: `deleteProduct()` controller
-UserRouter.delete("/:userId", userController.getUser);
+// UserRouter.delete("/:userId", userController.getUser);
 
 UserRouter.post("/sync", userController.getUser);
 

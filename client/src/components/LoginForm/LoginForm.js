@@ -9,15 +9,19 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { loginError, setLoginError } = useState("");
-  const { loginWithGoogle, login, currentUser } = useAuth();
+
+  const [loginError, setLoginError] = useState("");
+  const { loginWithGoogle, login } = useAuth();
   const navigate = useNavigate();
 
   async function handleLoginWithGoogleClick(e) {
     e.preventDefault();
     try {
       await loginWithGoogle();
-      await syncUserData();
+      // const res = await syncUserData();
+      // console.log(res.data);
+      //setCurrentUser(res.data.userId);
+
       navigate("/home");
     } catch {
       setError("User not found");
@@ -27,10 +31,13 @@ export default function Register() {
     e.preventDefault();
     try {
       await login(email, password);
-      await syncUserData();
+      // const res = await syncUserData();
+
+      // setCurrentUser(res.data.userId);
       navigate("/home");
-    } catch {
+    } catch (err) {
       setError("Something went wrong");
+      console.log(err);
     }
   }
 

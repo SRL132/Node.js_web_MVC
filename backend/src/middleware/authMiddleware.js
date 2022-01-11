@@ -9,9 +9,9 @@ async function authMiddleware(req, res, next) {
     try {
       const userClaims = await auth.verifyIdToken(bearerToken);
 
-      const { email, uid } = userClaims;
+      console.log(userClaims);
 
-      console.log(email, uid);
+      const { email, uid } = userClaims;
 
       req.user = {
         email: email,
