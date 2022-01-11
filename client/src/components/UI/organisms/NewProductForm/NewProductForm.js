@@ -12,24 +12,24 @@ function addProductDetails(product) {
   return {
     id: uuid(),
     ...product,
-    quantity: 0,
-    isFavorite: false,
+    // quantity: 0,
+    // isFavorite: false,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    votes: {
-      upVotes: {
-        upperLimit: 10,
-        currentValue: 0,
-      },
-      downVotes: {
-        lowerLimit: 10,
-        currentValue: 0,
-      },
-    },
-    author: {
-      id: uuid(),
-      ...product.author,
-    },
+    // votes: {
+    //   upVotes: {
+    //     upperLimit: 10,
+    //     currentValue: 0,
+    //   },
+    //   downVotes: {
+    //     lowerLimit: 10,
+    //     currentValue: 0,
+    //   },
+    // },
+    // author: {
+    //   id: uuid(),
+    //   ...product.author,
+    // },
   };
 }
 
@@ -40,13 +40,13 @@ function NewProductForm({ saveNewProduct }) {
     initialValues: {
       title: "",
       price: 0,
-      img: "",
+      // img: "",
       shortDescription: "",
-      longDescription: "",
+      // longDescription: "",
       unitsInStock: 0,
-      authorFirstName: "",
-      authorLastName: "",
-      authorEmail: "",
+      // authorFirstName: "",
+      // authorLastName: "",
+      // authorEmail: "",
     },
     validationSchema: productSchema,
     onSubmit: (values, { setSubmitting }) => {
@@ -85,7 +85,7 @@ function NewProductForm({ saveNewProduct }) {
           hasErrorMessage={formik.touched.price}
           errorMessage={formik.errors.price}
         />
-        <Input
+        {/* <Input
           type="text"
           label="Product image url"
           id="img"
@@ -95,7 +95,7 @@ function NewProductForm({ saveNewProduct }) {
           handleBlur={formik.handleBlur}
           hasErrorMessage={formik.touched.img}
           errorMessage={formik.errors.img}
-        />
+        /> */}
         <Input
           type="text"
           label="Short description"
@@ -107,7 +107,7 @@ function NewProductForm({ saveNewProduct }) {
           hasErrorMessage={formik.touched.shortDescription}
           errorMessage={formik.errors.shortDescription}
         />
-        <Input
+        {/* <Input
           type="text"
           label="Long description"
           id="longDescription"
@@ -117,7 +117,7 @@ function NewProductForm({ saveNewProduct }) {
           handleBlur={formik.handleBlur}
           hasErrorMessage={formik.touched.longDescription}
           errorMessage={formik.errors.longDescription}
-        />
+        /> */}
         <Input
           type="number"
           label="Units in stock"
@@ -129,7 +129,7 @@ function NewProductForm({ saveNewProduct }) {
           hasErrorMessage={formik.touched.unitsInStock}
           errorMessage={formik.errors.unitsInStock}
         />
-        <Input
+        {/* <Input
           type="text"
           label="Author first name"
           id="authorFirstName"
@@ -161,7 +161,7 @@ function NewProductForm({ saveNewProduct }) {
           handleBlur={formik.handleBlur}
           hasErrorMessage={formik.touched.authorEmail}
           errorMessage={formik.errors.authorEmail}
-        />
+        /> */}
         <Button
           submitButton
           block
@@ -171,7 +171,7 @@ function NewProductForm({ saveNewProduct }) {
         </Button>
       </form>
 
-      {hasSubmitted && <Navigate to="/" />}
+      {hasSubmitted && <Navigate to="/home" replace />}
     </>
   );
 }

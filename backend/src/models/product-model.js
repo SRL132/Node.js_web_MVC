@@ -2,12 +2,15 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
-    trim: true,
   },
-  description: {
+  shortDescription: {
     type: String,
     required: true,
   },
@@ -19,16 +22,27 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    required: true,
+  },
+  updatedAt: {
+    type: Date,
+    required: true,
+  },
 });
 
 const ProductModel = new mongoose.model("products", ProductSchema);
 
 function validateProduct(product) {
   const schema = Joi.object({
+    id: Joi.string().required(),
     title: Joi.string().min(5).max(50).required(),
-    description: Joi.string().min(10).max(200).required(),
+    shortDescription: Joi.string().min(10).max(200).required(),
     price: Joi.number().required(),
     unitsInStock: Joi.number().required(),
+    createdAt: Joi.date().required(),
+    updatedAt: Joi.date().required(),
   });
 
   return schema.validate(product);
