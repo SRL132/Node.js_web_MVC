@@ -9,8 +9,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { loginError, setLoginError } = useState("");
-  const { loginWithGoogle, login, currentUser } = useAuth();
+  const { loginWithGoogle, login, setCurrentUser } = useAuth();
 
   let navigate = useNavigate();
 
@@ -19,7 +18,10 @@ export default function Register() {
 
     try {
       await loginWithGoogle();
-      // await syncUserData();
+      const res = await syncUserData();
+
+      setCurrentUser(res.data.userId);
+
       navigate("/home", { replace: true });
     } catch {
       setError("User not found");
@@ -30,7 +32,9 @@ export default function Register() {
 
     try {
       await login(email, password);
-      // await syncUserData();
+      const res = await syncUserData();
+     setCurrentUser(res.data.userId);
+
       navigate("/home", { replace: true });
     } catch {
       setError("Something went wrong");
