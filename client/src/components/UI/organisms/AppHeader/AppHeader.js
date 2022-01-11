@@ -59,11 +59,6 @@ function AppHeader({ ...props }) {
                     Log In
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/recoverpassword">
-                    Recover Password
-                  </Link>
-                </li>
               </ul>
             }
 

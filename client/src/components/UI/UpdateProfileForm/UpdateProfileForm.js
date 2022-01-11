@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'context/auth/reducer';
 
@@ -30,7 +30,7 @@ export default function UpdateProfileForm() {
             promises.push(updatePassword(password));
         }
         Promise.all(promises).then(() => {
-            navigate('home')
+            navigate('/home')
         }).catch(() => {
             setError('Failed to update profile')
         }).finally(() => {
@@ -79,7 +79,7 @@ export default function UpdateProfileForm() {
                         <button disabled={loading} type="submit" className="btn btn-primary">Update</button>
                     </form>
                 </div>
-                <p className='text-center'> <a href="/login">Cancel</a></p>
+                <p className='text-center'> <Link to="/home">Cancel</Link></p>
             </div>
         </div>
     )
