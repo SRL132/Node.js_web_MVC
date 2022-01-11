@@ -5,6 +5,8 @@ import { actionTypes } from "./types";
 
 import * as api from "api";
 
+import productsApi from "api/products";
+
 export const initialState = {
   products: {},
   productIds: [],
@@ -37,8 +39,8 @@ export const reducer = (state, action) => {
       const newObjs = { ...state.products };
 
       action.payload.forEach((e) => {
-        newIds.push(e.id);
-        newObjs[e.id] = e;
+        newIds.push(e._id);
+        newObjs[e._id] = e;
       });
 
       return {
@@ -154,11 +156,11 @@ function ProductsProvider({ children }) {
     if (productIds.length === 0) {
       const request = async () => {
         dispatch({ type: actionTypes.PRODUCTS_FETCHING });
-        const { data, hasError, loadingError } = await api.getProducts();
+        const { data: { data: products }, hasError, loadingError } = await productsApi.getProducts();
 
         if (hasError)
           dispatch({ type: actionTypes.PRODUCTS_ERROR, payload: loadingError });
-        else dispatch({ type: actionTypes.PRODUCTS_SUCCESS, payload: data });
+        else dispatch({ type: actionTypes.PRODUCTS_SUCCESS, payload: products });
       };
 
       request();

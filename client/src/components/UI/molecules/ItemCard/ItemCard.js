@@ -65,7 +65,7 @@ function ItemCard({
       <Divider />
       <footer className="ItemCard__meta">
         <div className="ItemCard__icons">
-          <div className="ItemCard__icon-row">
+          {/* <div className="ItemCard__icon-row">
             <IconButton aria-label="up vote product" handleClick={onUpVote}>
               <ThumbUp />
             </IconButton>
@@ -79,8 +79,8 @@ function ItemCard({
             >
               {upVotes.currentValue}
             </p>
-          </div>
-          <div className="ItemCard__icon-row">
+          </div> */}
+          {/* <div className="ItemCard__icon-row">
             <IconButton aria-label="down vote product" handleClick={onDownVote}>
               <ThumbDown />
             </IconButton>
@@ -94,7 +94,7 @@ function ItemCard({
             >
               {downVotes.currentValue}
             </p>
-          </div>
+          </div> */}
         </div>
         <div className="ItemCard__icon-row">
           <Button onClick={onAddToCart}>Add to cart</Button>
@@ -116,24 +116,24 @@ getPopularityClasses.defaultProps = {
   popularityClassName: "",
 };
 
-ItemCard.propTypes = {
-  id: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  shortDescription: PropTypes.string.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  upVotes: PropTypes.shape({
-    currentValue: PropTypes.number.isRequired,
-    upperLimit: PropTypes.number.isRequired,
-  }),
-  downVotes: PropTypes.shape({
-    currentValue: PropTypes.number.isRequired,
-    lowerLimit: PropTypes.number.isRequired,
-  }),
-  handleDownVote: PropTypes.func.isRequired,
-  handleUpVote: PropTypes.func.isRequired,
-  handleSetFavorite: PropTypes.func.isRequired,
-  handleAddToCart: PropTypes.func.isRequired,
-};
+// ItemCard.propTypes = {
+//   id: PropTypes.string.isRequired,
+//   img: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   shortDescription: PropTypes.string.isRequired,
+//   isFavorite: PropTypes.bool.isRequired,
+//   upVotes: PropTypes.shape({
+//     currentValue: PropTypes.number.isRequired,
+//     upperLimit: PropTypes.number.isRequired,
+//   }),
+//   downVotes: PropTypes.shape({
+//     currentValue: PropTypes.number.isRequired,
+//     lowerLimit: PropTypes.number.isRequired,
+//   }),
+//   handleDownVote: PropTypes.func.isRequired,
+//   handleUpVote: PropTypes.func.isRequired,
+//   handleSetFavorite: PropTypes.func.isRequired,
+//   handleAddToCart: PropTypes.func.isRequired,
+// };
 
 export default ItemCard;

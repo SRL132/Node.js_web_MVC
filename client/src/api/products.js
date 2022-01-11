@@ -5,13 +5,18 @@ const getProduct = async (productId, baseUrl = client.baseUrl) => {
   return http.get(`${baseUrl}/product/${productId}`);
 }
 
-// const getProducts = async (episode) => Promise.all(
-//   episode.products.map(async characterUrl => http.get(characterUrl))
-// )
+const getProducts = async (baseUrl = client.baseUrl) => {
+  return http.get(`${baseUrl}/products`);
+}
+
+const postProduct = async (product, baseUrl = client.baseUrl) => {
+  return http.post(`${baseUrl}/product/`, product);
+}
 
 const productsApi = {
   getProduct,
-  // getProducts,
+  getProducts,
+  postProduct,
 };
 
-export default charactersApi;
+export default productsApi;

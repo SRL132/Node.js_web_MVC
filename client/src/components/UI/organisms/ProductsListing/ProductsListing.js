@@ -8,8 +8,8 @@ function ProductsListing({ ...props }) {
   const {
     products,
     productIds,
-    handleDownVote,
-    handleUpVote,
+    // handleDownVote,
+    // handleUpVote,
     handleSetFavorite,
   } = useProducts();
 
@@ -22,15 +22,15 @@ function ProductsListing({ ...props }) {
 
         return (
           <ItemCard
-            key={product.id}
-            id={product.id}
+            key={product._id}
+            id={product._id}
             img={product.img}
             title={product.title}
             shortDescription={product.shortDescription}
-            upVotes={product.votes.upVotes}
-            handleUpVote={handleUpVote}
-            downVotes={product.votes.downVotes}
-            handleDownVote={handleDownVote}
+            // upVotes={product.votes.upVotes}
+            // handleUpVote={handleUpVote}
+            // downVotes={product.votes.downVotes}
+            // handleDownVote={handleDownVote}
             isFavorite={product.isFavorite}
             handleSetFavorite={handleSetFavorite}
             handleAddToCart={handleAddToCart}
