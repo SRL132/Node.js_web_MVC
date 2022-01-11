@@ -39,7 +39,7 @@ function AddressForm() {
 
       setTimeout(() => {
         setHasSubmitted(true);
-        navigate("checkout/step-3");
+        navigate("/checkout/step-3");
       }, 500);
     },
   });

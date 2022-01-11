@@ -11,6 +11,7 @@ import {
   Register,
   ResetPassword,
   CheckoutCompleted,
+  UpdateProfile,
 } from "components/pages";
 
 import { AuthProvider } from "context/auth/reducer";
@@ -44,7 +45,7 @@ function App() {
             <Route path='/home' element={<Home />} />
           </Route>
           <Route path='/updateprofile' element={<PrivateRoute />} >
-            <Route path='/updateprofile' element={<UpdateProfileForm />} />
+            <Route path='/updateprofile' element={<UpdateProfile />} />
           </Route>
           <Route path='/new-product' element={<PrivateRoute />} >
             <Route exact strict path='/new-product' element={<NewProduct />} />
@@ -52,8 +53,18 @@ function App() {
           <Route path="/recoverpassword" element={<ResetPassword />} />
           <Route path="/register" element={<Register />} />
           <Route path='/checkout' element={<PrivateRoute />} >
-            <Route exact strict path='/checkout' element={<CheckoutInfo />} />
+            <Route path='/checkout' element={<CheckoutInfo />} />
           </Route>
+          <Route path='/checkout/step-2' element={<PrivateRoute />} >
+            <Route path='/checkout/step-2' element={<CheckoutDelivery />} />
+          </Route>
+          <Route path='/checkout/step-3' element={<PrivateRoute />} >
+            <Route path='/checkout/step-3' element={<CheckoutPayment />} />
+          </Route>
+          <Route path='/checkout/step-4' element={<PrivateRoute />} >
+            <Route path='/checkout/step-4' element={<CheckoutCompleted />} />
+          </Route>
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>

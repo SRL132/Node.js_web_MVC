@@ -171,7 +171,7 @@ function NewProductForm({ saveNewProduct }) {
         </Button>
       </form>
 
-      {hasSubmitted && <Navigate to="/" />}
+      {hasSubmitted && <Navigate to="/home" />}
     </>
   );
 }

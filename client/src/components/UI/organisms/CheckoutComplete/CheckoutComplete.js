@@ -62,7 +62,7 @@ const CheckoutComplete = () => {
       <hr />
       <div className="d-flex justify-content-end">
         <span>
-          Total: <strong> {getCartTotal()}€</strong>
+          {/* Total: <strong> {getCartTotal()}€</strong> */}
         </span>
       </div>
       <hr />
