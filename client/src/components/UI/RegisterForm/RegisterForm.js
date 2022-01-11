@@ -11,7 +11,8 @@ export default function Register() {
   const { register, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+
+  let navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function Register() {
         console.log(currentUser);
         await register(email, password);
         await syncUserData();
-        navigate("/home");
+        navigate("home");
       } catch {
         setError("Something went wrong");
       }

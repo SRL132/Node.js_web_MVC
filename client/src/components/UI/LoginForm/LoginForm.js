@@ -11,24 +11,27 @@ export default function Register() {
   const [error, setError] = useState("");
   const { loginError, setLoginError } = useState("");
   const { loginWithGoogle, login, currentUser } = useAuth();
-  const navigate = useNavigate();
+
+  let navigate = useNavigate();
 
   async function handleLoginWithGoogleClick(e) {
     e.preventDefault();
+
     try {
       await loginWithGoogle();
-      await syncUserData();
-      navigate("/home");
+      // await syncUserData();
+      navigate("/home", { replace: true });
     } catch {
       setError("User not found");
     }
   }
   async function handleSubmit(e) {
     e.preventDefault();
+
     try {
       await login(email, password);
       await syncUserData();
-      navigate("/home");
+      navigate("/home", { replace: true });
     } catch {
       setError("Something went wrong");
     }

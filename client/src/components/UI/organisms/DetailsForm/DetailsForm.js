@@ -12,7 +12,7 @@ import { Button } from "components/UI/atoms";
 import detailsSchema from "./details-schema";
 
 const DetailsForm = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const {
     handleNameChange,
@@ -33,7 +33,7 @@ const DetailsForm = () => {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           setSubmitting(false);
-          navigate("/checkout/step-2");
+          navigate("checkout/step-2");
         }, 250);
       }}
     >

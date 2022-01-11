@@ -1,8 +1,9 @@
 import React from 'react'
 
+import { withLayout } from "components/HOC";
 import ResetPasswordForm from 'components/UI/ResetPasswordForm'
 
-export default function ResetPassword() {
+function ResetPassword() {
 
     return (
         <div>
@@ -10,3 +11,5 @@ export default function ResetPassword() {
         </div>
     )
 }
+
+export default withLayout(ResetPassword);

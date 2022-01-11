@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { withLayout } from "components/HOC";
 import LoginForm from 'components/UI/LoginForm'
 
-export default function Login() {
+function Login() {
     return (
         <div>
             <LoginForm />
         </div>
     )
 }
+
+export default withLayout(Login);

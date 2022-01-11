@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'context/auth/reducer';
 
-
 export default function UpdateProfileForm() {
 
     const [email, setEmail] = useState('');
@@ -13,7 +12,8 @@ export default function UpdateProfileForm() {
     const { currentUser, updateEmail, updatePassword } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+
+    let navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -30,7 +30,7 @@ export default function UpdateProfileForm() {
             promises.push(updatePassword(password));
         }
         Promise.all(promises).then(() => {
-            navigate('/home')
+            navigate('home')
         }).catch(() => {
             setError('Failed to update profile')
         }).finally(() => {

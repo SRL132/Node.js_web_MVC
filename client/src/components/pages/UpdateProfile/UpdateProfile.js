@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { withLayout } from "components/HOC";
 import UpdateProfileForm from 'components/UI/UpdateProfileForm'
 
-export default function UpdateProfile() {
+function UpdateProfile() {
     return (
         <div>
             <UpdateProfileForm />
         </div>
     )
 }
+
+export default withLayout(UpdateProfile);

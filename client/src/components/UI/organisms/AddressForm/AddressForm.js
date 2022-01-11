@@ -15,7 +15,8 @@ function AddressForm() {
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+
   const {
     handleAddressChange,
     handleCountryChange,
@@ -38,7 +39,7 @@ function AddressForm() {
 
       setTimeout(() => {
         setHasSubmitted(true);
-        navigate("/checkout/step-3");
+        navigate("checkout/step-3");
       }, 500);
     },
   });

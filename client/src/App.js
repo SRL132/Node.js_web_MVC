@@ -14,7 +14,6 @@ import {
 } from "components/pages";
 
 import { AuthProvider } from "context/auth/reducer";
-import NavBar from "components/UI/NavBar";
 import PrivateRoute from "components/UI/PrivateRoute";
 import UpdateProfileForm from "components/UI/UpdateProfileForm";
 // import Checkout from "components/pages/Checkout";
@@ -38,7 +37,6 @@ function App() {
   return (
     <AuthProvider value={currentUser}>
       <BrowserRouter>
-        <NavBar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
