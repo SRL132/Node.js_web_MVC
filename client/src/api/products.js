@@ -10,6 +10,8 @@ const getProducts = async (baseUrl = client.baseUrl) => {
 }
 
 const setProduct = async (product, baseUrl = client.baseUrl) => {
+  console.log(product);
+  console.log(baseUrl);
   return http.post(`${baseUrl}/products`, product);
 }
 

@@ -18,9 +18,8 @@ export default function Register() {
 
     try {
       await loginWithGoogle();
-      const res = await syncUserData();
-
-      setCurrentUser(res.data.userId);
+      // const res = await syncUserData();
+      // setCurrentUser(res.data.userId);
 
       navigate("/home", { replace: true });
     } catch {
@@ -32,8 +31,8 @@ export default function Register() {
 
     try {
       await login(email, password);
-      const res = await syncUserData();
-     setCurrentUser(res.data.userId);
+      // const res = await syncUserData();
+      // setCurrentUser(res.data.userId);
 
       navigate("/home", { replace: true });
     } catch {

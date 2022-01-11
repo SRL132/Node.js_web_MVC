@@ -6,13 +6,13 @@ export async function syncUserData() {
 
   return axios({
     method: "POST",
-    url: `http://localhost:8000/users/sync`,
+    url: `http://localhost:${process.env.REACT_APP_SERVER_PORT}/users/sync`,
     headers: {
       Authorization: `Bearer ${userToken}`,
     },
   });
 
-  // return fetch("http://localhost:8000/sign-up", {
+  // return fetch(`http://localhost:${process.env.SERVER_PORT}/sign-up`, {
   //   method: "POST", // *GET, POST, PUT, DELETE, etc.
   //   headers: {
   //     "Content-Type": "application/json",

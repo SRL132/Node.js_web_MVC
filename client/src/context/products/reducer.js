@@ -174,6 +174,8 @@ function ProductsProvider({ children }) {
     handleSetFavorite: (productId) => dispatch({ type: actionTypes.SET_FAVORITE, payload: productId }),
     saveNewProduct: async (newProduct) => {
       dispatch({ type: actionTypes.SAVE_NEW_PRODUCT, payload: newProduct });
+      console.log(newProduct);
+
       const { data: { data: products }, hasError, loadingError } = await productsApi.setProduct(newProduct);
 
       console.log(products);
