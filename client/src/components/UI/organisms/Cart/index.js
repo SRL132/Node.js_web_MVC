@@ -1,1 +1,1 @@
-export { default, getCartTotal } from "./Cart";
+export { default } from "./Cart";

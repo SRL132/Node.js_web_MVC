@@ -4,18 +4,17 @@ import { ShoppingCartItem } from "components/UI/molecules";
 
 import { useCartItems } from "context";
 
-function getCartTotal() {
-  const { cartItems, cartItemIds } = useCartItems();
 
-  return cartItemIds.reduce((accum, cartItemId) => {
-    const product = cartItems[cartItemId];
-    return accum + product.price * product.quantity;
-  }, 0);
-}
 
 function CheckOutCart({ ...props }) {
   const { cartItems, cartItemIds } = useCartItems();
+  function getCartTotal() {
 
+    return cartItemIds.reduce((accum, cartItemId) => {
+      const product = cartItems[cartItemId];
+      return accum + product.price * product.quantity;
+    }, 0);
+  }
   return (
     <aside {...props}>
       <div className="row flex-column">

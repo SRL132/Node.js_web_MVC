@@ -6,18 +6,17 @@ import { Button } from "components/UI/atoms";
 
 import { useCartItems } from "context";
 
-export function getCartTotal() {
-  const { cartItems, cartItemIds } = useCartItems();
 
-  return cartItemIds.reduce((accum, cartItemId) => {
-    const carItem = cartItems[cartItemId];
-    return accum + carItem.price * carItem.quantity;
-  }, 0);
-}
 
 function Cart({ ...props }) {
   const { cartItems, cartItemIds } = useCartItems();
+  const getCartTotal = () => {
 
+    return cartItemIds.reduce((accum, cartItemId) => {
+      const carItem = cartItems[cartItemId];
+      return accum + carItem.price * carItem.quantity;
+    }, 0);
+  }
   return (
     <aside {...props}>
       <div className="row flex-column">

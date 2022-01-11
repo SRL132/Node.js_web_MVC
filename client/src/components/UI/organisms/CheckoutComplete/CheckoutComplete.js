@@ -1,8 +1,8 @@
 import React from "react";
 
-import { getCartTotal } from "components/UI/organisms/Cart";
 
 import { useCartItems, useData } from "context";
+
 
 const CheckoutComplete = () => {
   const {
@@ -16,7 +16,7 @@ const CheckoutComplete = () => {
     zipCode,
     instructions,
   } = useData();
-
+  const getCartTotal = useCartItems();
   const orderNumber = Math.floor(Math.random() * Math.random() * 1000000);
   const { cartItems, cartItemIds } = useCartItems();
 
