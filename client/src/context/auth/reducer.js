@@ -33,9 +33,9 @@ export function AuthProvider({ children }) {
   async function login(email, password) {
     await auth.signInWithEmailAndPassword(email, password);
 
-    const res = await syncUserData();
-    console.log(res.data.userId);
-    // setCurrentUser(res.data.userId);
+    //const res = await syncUserData();
+
+    //setCurrentUser(res.data.userId);
   }
   function logout() {
     setCurrentUser("");
@@ -68,6 +68,7 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     loginWithGoogle,
+    setCurrentUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

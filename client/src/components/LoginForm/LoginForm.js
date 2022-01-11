@@ -11,7 +11,7 @@ export default function Register() {
   const [error, setError] = useState("");
 
   const [loginError, setLoginError] = useState("");
-  const { loginWithGoogle, login } = useAuth();
+  const { loginWithGoogle, login, setCurrentUser } = useAuth();
   const navigate = useNavigate();
 
   async function handleLoginWithGoogleClick(e) {
@@ -31,9 +31,9 @@ export default function Register() {
     e.preventDefault();
     try {
       await login(email, password);
-      // const res = await syncUserData();
+      const res = await syncUserData();
 
-      // setCurrentUser(res.data.userId);
+      setCurrentUser(res.data.userId);
       navigate("/home");
     } catch (err) {
       setError("Something went wrong");
