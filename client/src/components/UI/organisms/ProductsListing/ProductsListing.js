@@ -22,8 +22,8 @@ function ProductsListing({ ...props }) {
 
         return (
           <ItemCard
-            key={product._id}
-            id={product._id}
+            key={product.id}
+            id={product.id}
             img={product.img}
             title={product.title}
             shortDescription={product.shortDescription}
