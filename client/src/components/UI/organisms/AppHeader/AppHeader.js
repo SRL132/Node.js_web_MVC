@@ -44,6 +44,12 @@ function AppHeader({ ...props }) {
                     Log Out
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link"
+                    to="/updateprofile" >
+                    Profile
+                  </Link>
+                </li>
               </ul>}
 
             {!currentUser &&
@@ -53,8 +59,14 @@ function AppHeader({ ...props }) {
                     Log In
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/recoverpassword">
+                    Recover Password
+                  </Link>
+                </li>
               </ul>
             }
+
           </nav>
         </div>
       </div>

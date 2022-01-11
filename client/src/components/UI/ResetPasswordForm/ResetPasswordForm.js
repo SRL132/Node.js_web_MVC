@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import { useAuth } from 'context/auth/reducer';
 
@@ -48,8 +49,8 @@ export default function ResetPasswordForm() {
                         <button type="submit" className="btn btn-primary">Reset Password</button>
                     </form>
                 </div>
-                <p className='text-center'>Don't have an account? Register <a href="/register">here</a></p>
-                <p className='text-center'>Already have an account? Login <a href="/login">here</a></p>
+                <p className='text-center'>Don't have an account? Register <Link to="/register">here</Link></p>
+                <p className='text-center'>Already have an account? Login <Link to="/login">here</Link></p>
             </div>
         </div>
     )

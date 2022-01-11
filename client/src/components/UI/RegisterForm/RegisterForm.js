@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "context/auth/reducer";
 import { syncUserData } from "services/utils";
@@ -85,7 +85,7 @@ export default function Register() {
           </form>
         </div>
         <p className="text-center">
-          Already have an account? Login <a href="/login">here</a>
+          Already have an account? Login <Link to="/login">here</Link>
         </p>
       </div>
     </div>

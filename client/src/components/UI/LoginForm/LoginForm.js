@@ -30,7 +30,7 @@ export default function Register() {
 
     try {
       await login(email, password);
-      await syncUserData();
+      // await syncUserData();
       navigate("/home", { replace: true });
     } catch {
       setError("Something went wrong");

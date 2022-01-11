@@ -35,17 +35,17 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="Home">
+              <Link className="nav-link" to="Home">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               {currentUser === null ? (
-                <a className="nav-link" href="Login">
+                <Link className="nav-link" to="Login">
                   Log In
-                </a>
+                </Link>
               ) : (
-                <a className="nav-link" href="Login" onClick={handleLogout}>
+                <a className="nav-link" to="Login" onClick={handleLogout}>
                   Log Out
                 </a>
               )}
