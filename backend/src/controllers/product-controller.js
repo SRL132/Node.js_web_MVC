@@ -18,7 +18,7 @@ async function createProduct(req, res, next) {
       updatedAt: updatedAt
     });
     res.status(201).send({
-      data: product._id,
+      data: product.id,
     });
   } catch (err) {
     console.log(err);
