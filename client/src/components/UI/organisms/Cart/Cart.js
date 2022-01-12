@@ -5,6 +5,7 @@ import { ShoppingCartItem } from "components/UI/molecules";
 import { Button } from "components/UI/atoms";
 
 import { useCartItems } from "context";
+import productsApi from "api/products";
 
 
 
@@ -16,6 +17,16 @@ function Cart({ ...props }) {
       const carItem = cartItems[cartItemId];
       return accum + carItem.price * carItem.quantity;
     }, 0);
+  }
+
+  function itemCheckout() {
+    console.log(cartItems)
+    console.log("checking items out")
+    const checkoutItems = cartItemIds.map(cartItemId => {
+      const cartItem = cartItems[cartItemId];
+      console.log(cartItem.id)
+    })
+
   }
   return (
     <aside {...props}>
@@ -59,11 +70,11 @@ function Cart({ ...props }) {
             </div>
             <div className="col">
               <NavLink
-                className={(navData) => navData.isActive ? "active" : ""}
+                className={cartItemIds.length == 0 ? "active" : ""}
                 className="navbar-brand"
-                to="/checkout"
+                to={cartItemIds.length == 0 ? "/home" : "/checkout"}
               >
-                <Button disabled={cartItemIds.length == 0 ? true : false}>
+                <Button disabled={cartItemIds.length == 0 ? true : false} onClick={itemCheckout}>
                   Checkout
                 </Button>
               </NavLink>

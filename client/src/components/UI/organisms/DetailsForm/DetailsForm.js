@@ -33,7 +33,7 @@ const DetailsForm = () => {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           setSubmitting(false);
-          navigate("checkout/step-2");
+          navigate("/checkout/step-2");
         }, 250);
       }}
     >

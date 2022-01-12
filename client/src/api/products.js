@@ -15,10 +15,16 @@ const setProduct = async (product, baseUrl = client.baseUrl) => {
   return http.post(`${baseUrl}/products`, product);
 }
 
+const productsCheckout = async (productId, baseUrl = client.baseUrl) => {
+  return http.get(`${baseUrl}/products/checkout/${productId}`);
+}
+
 const productsApi = {
   getProduct,
   getProducts,
   setProduct,
+  productsCheckout
 };
+
 
 export default productsApi;

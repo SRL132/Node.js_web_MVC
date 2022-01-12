@@ -41,6 +41,7 @@ function ShoppingCartItem({
   }
 
   return (
+
     <div className="col">
       <div className="row flex-column">
         <div className="col">
@@ -63,14 +64,17 @@ function ShoppingCartItem({
                 <div className="col mt-auto">
                   <div className="row">
                     <div className="col col-6 col-lg-4">
-                      <select
+                      {quantity <= 3 ? <select
                         className="custom-select"
                         onChange={(event) => onHandleChange(event, id)}
                         onBlur={(event) => onHandleChange(event, id)}
                         value={quantity}
                       >
                         {buildSelectOptions(unitsInStock)}
-                      </select>
+                      </select> : <input
+                        onChange={(event) => onHandleChange(event, id)}
+                        onBlur={(event) => onHandleChange(event, id)}
+                        value={quantity} />}
                     </div>
                     <div className="col col-6 col-lg-8">
                       <Button onClick={onHandleRemove}>Remove</Button>
