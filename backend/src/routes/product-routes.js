@@ -25,4 +25,7 @@ ProductRouter.patch("/:productId", productController.updateProduct);
 //  DELETE `/products/:productId` Delete a product by its id: `deleteProduct()` controller
 ProductRouter.delete("/:productId", productController.deleteProduct);
 
+// Checkout products
+ProductRouter.get("/checkout/:productId", productController.checkout);
+
 module.exports = ProductRouter;

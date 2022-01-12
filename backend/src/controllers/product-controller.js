@@ -100,10 +100,27 @@ async function deleteProduct(req, res, next) {
   }
 }
 
+async function checkout(req, res, next) {
+  console.log("Checkout");
+  console.log(req.params)
+  try {
+    const products = await db.Product.findById(req.params.productId);
+
+    res.status(201).send({
+      data: products,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+}
+
 module.exports = {
   createProduct: createProduct,
   getProducts: getProducts,
   getSingleProduct: getSingleProduct,
   updateProduct: updateProduct,
   deleteProduct: deleteProduct,
+  checkout: checkout
+
 };
