@@ -39,8 +39,8 @@ export const reducer = (state, action) => {
       const newObjs = { ...state.products };
 
       action.payload.forEach((e) => {
-        newIds.push(e._id);
-        newObjs[e._id] = e;
+        newIds.push(e.id);
+        newObjs[e.id] = e;
       });
 
       return {
@@ -172,7 +172,16 @@ function ProductsProvider({ children }) {
     handleDownVote: (productId) => dispatch({ type: actionTypes.DOWN_VOTE, payload: productId }),
     handleUpVote: (productId) => dispatch({ type: actionTypes.UP_VOTE, payload: productId }),
     handleSetFavorite: (productId) => dispatch({ type: actionTypes.SET_FAVORITE, payload: productId }),
-    saveNewProduct: (newProduct) => dispatch({ type: actionTypes.SAVE_NEW_PRODUCT, payload: newProduct })
+    saveNewProduct: async (newProduct) => {
+      dispatch({ type: actionTypes.SAVE_NEW_PRODUCT, payload: newProduct });
+      const { data: { data: products }, hasError, loadingError } = await productsApi.setProduct(newProduct);
+
+      console.log(products);
+
+      if (hasError)
+        dispatch({ type: actionTypes.PRODUCTS_ERROR, payload: loadingError });
+      else dispatch({ type: actionTypes.PRODUCTS_SUCCESS, payload: products });
+    }
   };
 
   return (
