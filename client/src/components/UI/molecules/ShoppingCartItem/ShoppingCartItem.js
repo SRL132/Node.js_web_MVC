@@ -18,19 +18,8 @@ function buildSelectOptions(unitsInStock) {
   });
 }
 
-function ShoppingCartItem({
-  id,
-  img,
-  title,
-  price,
-  quantity,
-  unitsInStock,
-}) {
-
-  const {
-    handleChangeQuantity,
-    handleRemoveItem,
-  } = useCartItems();
+function ShoppingCartItem({ id, img, title, price, quantity, unitsInStock }) {
+  const { handleChangeQuantity, handleRemoveItem } = useCartItems();
 
   function onHandleChange(event, id) {
     event.persist();
@@ -41,7 +30,6 @@ function ShoppingCartItem({
   }
 
   return (
-
     <div className="col">
       <div className="row flex-column">
         <div className="col">
@@ -64,17 +52,22 @@ function ShoppingCartItem({
                 <div className="col mt-auto">
                   <div className="row">
                     <div className="col col-6 col-lg-4">
-                      {quantity <= 3 ? <select
-                        className="custom-select"
-                        onChange={(event) => onHandleChange(event, id)}
-                        onBlur={(event) => onHandleChange(event, id)}
-                        value={quantity}
-                      >
-                        {buildSelectOptions(unitsInStock)}
-                      </select> : <input
-                        onChange={(event) => onHandleChange(event, id)}
-                        onBlur={(event) => onHandleChange(event, id)}
-                        value={quantity} />}
+                      {quantity <= 3 ? (
+                        <select
+                          className="custom-select"
+                          onChange={(event) => onHandleChange(event, id)}
+                          onBlur={(event) => onHandleChange(event, id)}
+                          value={quantity}
+                        >
+                          {buildSelectOptions(unitsInStock)}
+                        </select>
+                      ) : (
+                        <input
+                          onChange={(event) => onHandleChange(event, id)}
+                          onBlur={(event) => onHandleChange(event, id)}
+                          value={quantity}
+                        />
+                      )}
                     </div>
                     <div className="col col-6 col-lg-8">
                       <Button onClick={onHandleRemove}>Remove</Button>
@@ -99,7 +92,7 @@ ShoppingCartItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
-  unitsInStock: PropTypes.number.isRequired
+  unitsInStock: PropTypes.number.isRequired,
 };
 
 export default ShoppingCartItem;

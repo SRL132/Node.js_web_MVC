@@ -49,9 +49,11 @@ function NewProductForm({ saveNewProduct }) {
       // authorEmail: "",
     },
     validationSchema: productSchema,
-    onSubmit: (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       const newProduct = addProductDetails(values);
-      saveNewProduct(newProduct);
+      const res = await saveNewProduct(newProduct);
+
+      console.log(res);
       setSubmitting(true);
 
       setTimeout(() => {
@@ -62,7 +64,6 @@ function NewProductForm({ saveNewProduct }) {
 
   return (
     <>
-
       <form onSubmit={formik.handleSubmit}>
         <Input
           type="text"
@@ -86,7 +87,8 @@ function NewProductForm({ saveNewProduct }) {
           hasErrorMessage={formik.touched.price}
           errorMessage={formik.errors.price}
         />
-        {/* <Input
+
+        <Input
           type="text"
           label="Product image url"
           id="img"
@@ -96,7 +98,8 @@ function NewProductForm({ saveNewProduct }) {
           handleBlur={formik.handleBlur}
           hasErrorMessage={formik.touched.img}
           errorMessage={formik.errors.img}
-        /> */}
+        />
+
         <Input
           type="text"
           label="Short description"

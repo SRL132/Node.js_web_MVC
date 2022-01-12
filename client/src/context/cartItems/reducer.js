@@ -8,9 +8,9 @@ import { actionTypes } from "./types";
 export const initialState = {
   cartItems: {},
   cartItemIds: [],
-  handleAddToCart: () => { },
-  handleChangeQuantity: () => { },
-  handleRemoveItem: () => { },
+  handleAddToCart: () => {},
+  handleChangeQuantity: () => {},
+  handleRemoveItem: () => {},
 };
 
 const CartItemsContext = createContext(initialState);
@@ -23,8 +23,6 @@ export const reducer = (state, action) => {
 
       const prevCartItem = cartItemIds.find((itemId) => itemId === cartItemId);
 
-      // @joan => hi ha dos returns
-
       if (prevCartItem) {
         return {
           ...state,
@@ -34,7 +32,7 @@ export const reducer = (state, action) => {
               ...cartItems[cartItemId],
               quantity:
                 cartItems[cartItemId].quantity <
-                  cartItems[cartItemId].unitsInStock
+                cartItems[cartItemId].unitsInStock
                   ? cartItems[cartItemId].quantity + 1
                   : cartItems[cartItemId].quantity,
             },
@@ -66,7 +64,7 @@ export const reducer = (state, action) => {
             ...cartItems[cartItemId],
             quantity:
               cartItems[cartItemId].id === cartItemId &&
-                cartItems[cartItemId].quantity <=
+              cartItems[cartItemId].quantity <=
                 cartItems[cartItemId].unitsInStock
                 ? Number(event.target.value)
                 : cartItems[cartItemId].quantity,
@@ -131,6 +129,6 @@ function useCartItems() {
 
 CartItemsProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export { CartItemsProvider, useCartItems };

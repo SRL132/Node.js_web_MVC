@@ -12,7 +12,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   async function register(email, password) {
@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
     await auth.signInWithEmailAndPassword(email, password);
   }
   function logout() {
+    localStorage.setItem("user", "");
     setCurrentUser("");
     return auth.signOut();
   }
@@ -49,6 +50,8 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setLoading(false);
 
+      localStorage.setItem("user", JSON.stringify(user));
+
       setCurrentUser(user);
     });
     return unsubscribe;
@@ -56,6 +59,7 @@ export function AuthProvider({ children }) {
 
   auth.onAuthStateChanged((user) => {
     setLoading(false);
+    localStorage.setItem("user", JSON.stringify(user));
     setCurrentUser(user);
   });
 

@@ -1,8 +1,6 @@
 import React from "react";
 
-
 import { useCartItems, useData } from "context";
-
 
 const CheckoutComplete = () => {
   const {
@@ -28,7 +26,8 @@ const CheckoutComplete = () => {
           Order Number: <strong>{orderNumber}</strong>
         </span>
         <span>
-          Date: <strong>{new Date().toLocaleDateString("es-ES")} </strong>&nbsp;at&nbsp;
+          Date: <strong>{new Date().toLocaleDateString("es-ES")} </strong>
+          &nbsp;at&nbsp;
           <strong>{new Date().toLocaleTimeString("es-ES")}</strong>
         </span>
       </div>
@@ -61,9 +60,7 @@ const CheckoutComplete = () => {
 
       <hr />
       <div className="d-flex justify-content-end">
-        <span>
-          {/* Total: <strong> {getCartTotal()}€</strong> */}
-        </span>
+        <span>{/* Total: <strong> {getCartTotal()}€</strong> */}</span>
       </div>
       <hr />
       <div>

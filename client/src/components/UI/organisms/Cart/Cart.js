@@ -7,26 +7,20 @@ import { Button } from "components/UI/atoms";
 import { useCartItems } from "context";
 import productsApi from "api/products";
 
-
-
 function Cart({ ...props }) {
   const { cartItems, cartItemIds } = useCartItems();
   const getCartTotal = () => {
-
     return cartItemIds.reduce((accum, cartItemId) => {
       const carItem = cartItems[cartItemId];
       return accum + carItem.price * carItem.quantity;
     }, 0);
-  }
+  };
 
   function itemCheckout() {
-    console.log(cartItems)
-    console.log("checking items out")
-    const checkoutItems = cartItemIds.map(cartItemId => {
+    cartItemIds.map((cartItemId) => {
       const cartItem = cartItems[cartItemId];
-      console.log(cartItem.id)
-    })
-
+      console.log(cartItem._id);
+    });
   }
   return (
     <aside {...props}>
@@ -74,7 +68,10 @@ function Cart({ ...props }) {
                 className="navbar-brand"
                 to={cartItemIds.length == 0 ? "/home" : "/checkout"}
               >
-                <Button disabled={cartItemIds.length == 0 ? true : false} onClick={itemCheckout}>
+                <Button
+                  disabled={cartItemIds.length == 0 ? true : false}
+                  onClick={itemCheckout}
+                >
                   Checkout
                 </Button>
               </NavLink>

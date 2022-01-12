@@ -18,11 +18,11 @@ function ProductsListing({ ...props }) {
   return (
     <section className="row" {...props}>
       {productIds.map((productId) => {
-        const product = products[productId]
+        const product = products[productId];
 
         return (
           <ItemCard
-            key={product.id}
+            key={product.i + `${Math.random() * 10000}`}
             id={product.id}
             img={product.img}
             title={product.title}
@@ -35,7 +35,7 @@ function ProductsListing({ ...props }) {
             handleSetFavorite={handleSetFavorite}
             handleAddToCart={handleAddToCart}
           />
-        )
+        );
       })}
     </section>
   );
