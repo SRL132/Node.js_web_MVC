@@ -6,7 +6,7 @@ export async function syncUserData() {
 
   return axios({
     method: "POST",
-    url: `http://localhost:8000/users/sync`,
+    url: `http://localhost:${process.env.REACT_APP_SERVER_PORT}/users/sync`,
     headers: {
       Authorization: `Bearer ${userToken}`,
     },

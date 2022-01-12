@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:8000`;
+const baseUrl = `http://localhost:${process.env.REACT_APP_SERVER_PORT}`;
 
 const apiClient = {
   baseUrl,
