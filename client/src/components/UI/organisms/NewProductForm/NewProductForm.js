@@ -62,6 +62,7 @@ function NewProductForm({ saveNewProduct }) {
 
   return (
     <>
+
       <form onSubmit={formik.handleSubmit}>
         <Input
           type="text"

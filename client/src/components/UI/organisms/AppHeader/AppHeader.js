@@ -40,7 +40,7 @@ function AppHeader({ ...props }) {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="Login" onClick={handleLogout}>
+                  <Link className="nav-link" to="/Login" onClick={handleLogout}>
                     Log Out
                   </Link>
                 </li>
@@ -55,7 +55,7 @@ function AppHeader({ ...props }) {
             {!currentUser &&
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="Login">
+                  <Link className="nav-link" to="/Login">
                     Log In
                   </Link>
                 </li>
