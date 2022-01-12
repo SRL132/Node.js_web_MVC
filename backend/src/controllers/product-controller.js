@@ -7,16 +7,28 @@ async function createProduct(req, res, next) {
   if (error) return res.status(400).send(error.details[0].message);
 
   try {
-    const { id, title, shortDescription, price, unitsInStock, createdAt, updatedAt } = req.body;
+    const {
+      id,
+      title,
+      shortDescription,
+      price,
+      img,
+      unitsInStock,
+      createdAt,
+      updatedAt,
+    } = req.body;
     const product = await db.Product.create({
       id: id,
       title: title,
       shortDescription: shortDescription,
       price: price,
+      img: img,
       unitsInStock: unitsInStock,
       createdAt: createdAt,
-      updatedAt: updatedAt
+      updatedAt: updatedAt,
     });
+
+    console.log(req.body);
     res.status(201).send({
       data: product.id,
     });
@@ -43,16 +55,15 @@ async function getSingleProduct(req, res, next) {
   try {
     const { productId } = req.params;
 
-    const product = await db.Product.findById(productId)
-      .select({
-        title: 1,
-        description: 1,
-        price: 1,
-        unitsInStock: 1,
-      });
+    const product = await db.Product.findById(productId).select({
+      title: 1,
+      description: 1,
+      price: 1,
+      unitsInStock: 1,
+    });
 
     res.status(200).send({
-      data: product
+      data: product,
     });
   } catch (err) {
     console.log(err);
@@ -89,7 +100,9 @@ async function deleteProduct(req, res, next) {
   try {
     const { productId } = req.params;
 
-    const deletedProduct = await db.Product.findOneAndDelete({ _id: productId });
+    const deletedProduct = await db.Product.findOneAndDelete({
+      _id: productId,
+    });
 
     res.status(200).send({
       data: { _id: deletedProduct._id },
@@ -102,7 +115,7 @@ async function deleteProduct(req, res, next) {
 
 async function checkout(req, res, next) {
   console.log("Checkout");
-  console.log(req.params)
+  console.log(req.params);
   try {
     const products = await db.Product.findById(req.params.productId);
 
@@ -121,6 +134,5 @@ module.exports = {
   getSingleProduct: getSingleProduct,
   updateProduct: updateProduct,
   deleteProduct: deleteProduct,
-  checkout: checkout
-
+  checkout: checkout,
 };

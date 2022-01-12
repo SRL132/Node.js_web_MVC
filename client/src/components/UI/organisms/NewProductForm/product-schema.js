@@ -9,11 +9,11 @@ const productSchema = Yup.object().shape({
     .integer("The price must be an integer")
     .positive("The price must be a positive number")
     .required("The price is required"),
-  // img: Yup.string()
-  //   .url("The image url is invalid")
-  //   .required("The image url is required"),
+  img: Yup.string()
+    .url("The image url is invalid")
+    .required("The image url is required"),
   shortDescription: Yup.string()
-    .min(2, "The short description is too short!")
+    .min(10, "The short description is too short!")
     .max(50, "The short description is too long!")
     .required("The short description is required"),
   // longDescription: Yup.string()

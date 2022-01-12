@@ -12,25 +12,15 @@ import { Button } from "components/UI/atoms";
 // } from "utils/payment";
 import { log } from "debug";
 
-import {
-  useLocation,
-  useNavigate,
-  useParams
-} from "react-router-dom";
-
-
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+//import { useCartItems } from "context";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
     let location = useLocation();
     let navigate = useNavigate();
     let params = useParams();
-    return (
-      <Component
-        {...props}
-        router={{ location, navigate, params }}
-      />
-    );
+    return <Component {...props} router={{ location, navigate, params }} />;
   }
 
   return ComponentWithRouterProp;
@@ -59,8 +49,9 @@ function PaymentForm() {
   const [cvc, setCvc] = useState("");
   // const [issuer, setIssuer] = useState("");
   const [focused, setFocused] = useState("");
-  const [formData, setFormData] = useState(null)
+  const [formData, setFormData] = useState(null);
   let navigate = useNavigate();
+  //const { cartItems, cartItemIds } = useCartItems();
 
   // const handleCallback = ({ issuer }, isValid) => {
   //   if (isValid) {
@@ -101,7 +92,6 @@ function PaymentForm() {
     // this.form.reset();
     navigate("/checkout/step-4");
   }
-
 
   // const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
 
@@ -173,17 +163,13 @@ function PaymentForm() {
           </div>
           {/* <input type="hidden" name="issuer" value={issuer} /> */}
 
-          <Button
-            className="btn btn-primary btn-block mt-2 mb-2"
-            submitButton
-          >
+          <Button className="btn btn-primary btn-block mt-2 mb-2" submitButton>
             PAY
           </Button>
         </form>
       </div>
     </div>
   );
-
 }
 
 export default withRouter(PaymentForm);

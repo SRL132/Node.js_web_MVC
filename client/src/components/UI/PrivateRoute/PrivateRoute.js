@@ -1,10 +1,9 @@
-import React from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+import React from "react";
+import { Outlet, Navigate } from "react-router-dom";
 
-import { useAuth } from 'context/auth/reducer'
+import { useAuth } from "context/auth/reducer";
 export default function PrivateRoute({ component: Component, ...rest }) {
-    const { currentUser } = useAuth()
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    return !currentUser ? <Navigate to="/login" /> : <Outlet />;
+  return !user ? <Navigate to="/login" /> : <Outlet />;
 }
-
