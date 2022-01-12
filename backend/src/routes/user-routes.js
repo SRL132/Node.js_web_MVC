@@ -15,7 +15,7 @@ const UserRouter = Router();
 UserRouter.use(authMiddleware);
 
 //  GET `/products` Get all the products: `getProducts()` controller
-UserRouter.get("/", userController.getUser);
+//UserRouter.get("/", userController.getUser);
 
 //  GET `/products/:productId` Get a single product by its ID: `getSingleProduct()` controller
 // UserRouter.get("/:userId", userController.getUser);

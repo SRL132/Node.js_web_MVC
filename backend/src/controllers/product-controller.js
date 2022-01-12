@@ -5,18 +5,20 @@ const { validateProduct } = require("../models/product-model");
 async function createProduct(req, res, next) {
   const { error } = validateProduct(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  console.log(req.body);
 
   try {
-    const { title, description, price, unitsInStock } = req.body;
+    const { id, title, shortDescription, price, unitsInStock, createdAt, updatedAt } = req.body;
     const product = await db.Product.create({
+      id: id,
       title: title,
-      description: description,
+      shortDescription: shortDescription,
       price: price,
       unitsInStock: unitsInStock,
+      createdAt: createdAt,
+      updatedAt: updatedAt
     });
     res.status(201).send({
-      data: product._id,
+      data: product.id,
     });
   } catch (err) {
     console.log(err);
@@ -26,10 +28,10 @@ async function createProduct(req, res, next) {
 
 async function getProducts(req, res, next) {
   try {
-    // const products = await db.Product.find().lean().exec();
+    const products = await db.Product.find().lean().exec();
 
     res.status(201).send({
-      data: "Hello",
+      data: products,
     });
   } catch (err) {
     console.log(err);

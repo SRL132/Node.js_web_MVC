@@ -12,7 +12,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState("");
   const [loading, setLoading] = useState(true);
 
   async function register(email, password) {
@@ -25,17 +25,10 @@ export function AuthProvider({ children }) {
   async function loginWithGoogle() {
     const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
     await auth.signInWithPopup(GoogleAuthProvider);
-
-    const res = await syncUserData();
-    setCurrentUser(res.data.userId);
   }
 
   async function login(email, password) {
     await auth.signInWithEmailAndPassword(email, password);
-
-    //const res = await syncUserData();
-
-    //setCurrentUser(res.data.userId);
   }
   function logout() {
     setCurrentUser("");
@@ -45,19 +38,25 @@ export function AuthProvider({ children }) {
   function resetPassword(email) {
     return auth.sendPasswordResetEmail(email);
   }
+  function updateEmail(email) {
+    return currentUser.updateEmail(email);
+  }
+  function updatePassword(password) {
+    return currentUser.updatePassword(password);
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setLoading(false);
 
-      //setCurrentUser(user);
+      setCurrentUser(user);
     });
     return unsubscribe;
   }, []);
 
   auth.onAuthStateChanged((user) => {
     setLoading(false);
-    //setCurrentUser(user);
+    setCurrentUser(user);
   });
 
   const value = {
@@ -68,8 +67,14 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     loginWithGoogle,
+    updateEmail,
+    updatePassword,
     setCurrentUser,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }
